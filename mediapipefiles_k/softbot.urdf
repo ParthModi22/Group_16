@@ -1,0 +1,455 @@
+<?xml version="1.0"?>
+<robot name="softbot">
+  <!-- Torso / Base -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.18 0.24 0.42"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 0.8 1"/>
+      </material>
+      <origin xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <!-- Head -->
+  <link name="head_link">
+    <visual>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <material name="white">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="head_pan" type="revolute">
+    <parent link="base_link"/>
+    <child link="head_link"/>
+    <origin xyz="0 0 0.35"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="1" lower="-1.5" upper="1.5"/>
+  </joint>
+
+  <link name="head_tilt_link">
+    <visual>
+      <geometry>
+        <sphere radius="0.01"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+
+  <joint name="head_tilt" type="revolute">
+    <parent link="head_link"/>
+    <child link="head_tilt_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="1" lower="-1.57" upper="1.57"/>
+  </joint>
+
+  <!-- Right Shoulder -->
+  <link name="r_upper_arm">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.25"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 0.8 0 1"/>
+      </material>
+      <origin xyz="0 0 -0.125"/>
+    </visual>
+  </link>
+
+  <joint name="r_sho_pitch" type="revolute">
+    <parent link="base_link"/>
+    <child link="r_upper_arm"/>
+    <origin xyz="0 -0.25 0.30"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <link name="r_sho_roll_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.25"/>
+      </geometry>
+      <material name="green"/>
+      <origin xyz="0 0 -0.125"/>
+    </visual>
+  </link>
+
+  <joint name="r_sho_roll" type="revolute">
+    <parent link="r_upper_arm"/>
+    <child link="r_sho_roll_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <!-- Right Elbow -->
+  <link name="r_lower_arm">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.25"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="0.8 0.8 0 1"/>
+      </material>
+      <origin xyz="0 0 -0.125"/>
+    </visual>
+  </link>
+
+  <joint name="r_el" type="revolute">
+    <parent link="r_sho_roll_link"/>
+    <child link="r_lower_arm"/>
+    <origin xyz="0 0 -0.25"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <!-- Left Shoulder -->
+  <link name="l_upper_arm">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.25"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 0.8 0 1"/>
+      </material>
+      <origin xyz="0 0 -0.125"/>
+    </visual>
+  </link>
+
+  <joint name="l_sho_pitch" type="revolute">
+    <parent link="base_link"/>
+    <child link="l_upper_arm"/>
+    <origin xyz="0 0.25 0.30"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <link name="l_sho_roll_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.25"/>
+      </geometry>
+      <material name="green"/>
+      <origin xyz="0 0 -0.125"/>
+    </visual>
+  </link>
+
+  <joint name="l_sho_roll" type="revolute">
+    <parent link="l_upper_arm"/>
+    <child link="l_sho_roll_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <!-- Left Elbow -->
+  <link name="l_lower_arm">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.25"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="0.8 0.8 0 1"/>
+      </material>
+      <origin xyz="0 0 -0.125"/>
+    </visual>
+  </link>
+
+  <joint name="l_el" type="revolute">
+    <parent link="l_sho_roll_link"/>
+    <child link="l_lower_arm"/>
+    <origin xyz="0 0 -0.25"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <!-- Right Hip -->
+  <link name="r_hip_link">
+    <visual>
+      <geometry>
+        <box size="0.08 0.12 0.08"/>
+      </geometry>
+      <material name="cyan">
+        <color rgba="0 0.8 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="r_hip_yaw" type="revolute">
+    <parent link="base_link"/>
+    <child link="r_hip_link"/>
+    <origin xyz="0 -0.13 -0.27"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <link name="r_hip_roll_link">
+    <visual>
+      <geometry>
+        <box size="0.08 0.12 0.08"/>
+      </geometry>
+      <material name="cyan"/>
+    </visual>
+  </link>
+
+  <joint name="r_hip_roll" type="revolute">
+    <parent link="r_hip_link"/>
+    <child link="r_hip_roll_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <link name="r_hip_pitch_link">
+    <visual>
+      <geometry>
+        <box size="0.08 0.12 0.08"/>
+      </geometry>
+      <material name="cyan"/>
+    </visual>
+  </link>
+
+  <joint name="r_hip_pitch" type="revolute">
+    <parent link="r_hip_roll_link"/>
+    <child link="r_hip_pitch_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <!-- Right Thigh -->
+  <link name="r_thigh">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.3"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="1 0.5 0 1"/>
+      </material>
+      <origin xyz="0 0 -0.15"/>
+    </visual>
+  </link>
+
+  <joint name="r_knee" type="revolute">
+    <parent link="r_hip_pitch_link"/>
+    <child link="r_thigh"/>
+    <origin xyz="0 0 -0.3"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <!-- Right Ankle -->
+  <link name="r_ankle_link">
+    <visual>
+      <geometry>
+        <box size="0.08 0.12 0.08"/>
+      </geometry>
+      <material name="purple">
+        <color rgba="0.8 0 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="r_ank_pitch" type="revolute">
+    <parent link="r_thigh"/>
+    <child link="r_ankle_link"/>
+    <origin xyz="0 0 -0.3"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <link name="r_ankle_roll_link">
+    <visual>
+      <geometry>
+        <box size="0.08 0.12 0.08"/>
+      </geometry>
+      <material name="purple"/>
+    </visual>
+  </link>
+
+  <joint name="r_ank_roll" type="revolute">
+    <parent link="r_ankle_link"/>
+    <child link="r_ankle_roll_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <!-- Left Hip -->
+  <link name="l_hip_link">
+    <visual>
+      <geometry>
+        <box size="0.08 0.12 0.08"/>
+      </geometry>
+      <material name="cyan">
+        <color rgba="0 0.8 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="l_hip_yaw" type="revolute">
+    <parent link="base_link"/>
+    <child link="l_hip_link"/>
+    <origin xyz="0 0.13 -0.27"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <link name="l_hip_roll_link">
+    <visual>
+      <geometry>
+        <box size="0.08 0.12 0.08"/>
+      </geometry>
+      <material name="cyan"/>
+    </visual>
+  </link>
+
+  <joint name="l_hip_roll" type="revolute">
+    <parent link="l_hip_link"/>
+    <child link="l_hip_roll_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <link name="l_hip_pitch_link">
+    <visual>
+      <geometry>
+        <box size="0.08 0.12 0.08"/>
+      </geometry>
+      <material name="cyan"/>
+    </visual>
+  </link>
+
+  <joint name="l_hip_pitch" type="revolute">
+    <parent link="l_hip_roll_link"/>
+    <child link="l_hip_pitch_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <!-- Left Thigh -->
+  <link name="l_thigh">
+    <visual>
+      <geometry>
+        <cylinder radius="0.04" length="0.3"/>
+      </geometry>
+      <material name="orange">
+        <color rgba="1 0.5 0 1"/>
+      </material>
+      <origin xyz="0 0 -0.15"/>
+    </visual>
+  </link>
+
+  <joint name="l_knee" type="revolute">
+    <parent link="l_hip_pitch_link"/>
+    <child link="l_thigh"/>
+    <origin xyz="0 0 -0.3"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <!-- Left Ankle -->
+  <link name="l_ankle_link">
+    <visual>
+      <geometry>
+        <box size="0.08 0.12 0.08"/>
+      </geometry>
+      <material name="purple">
+        <color rgba="0.8 0 0.8 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="l_ank_pitch" type="revolute">
+    <parent link="l_thigh"/>
+    <child link="l_ankle_link"/>
+    <origin xyz="0 0 -0.3"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <link name="l_ankle_roll_link">
+    <visual>
+      <geometry>
+        <box size="0.08 0.12 0.08"/>
+      </geometry>
+      <material name="purple"/>
+    </visual>
+  </link>
+
+  <joint name="l_ank_roll" type="revolute">
+    <parent link="l_ankle_link"/>
+    <child link="l_ankle_roll_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <!-- Waist / Torso rotation axes -->
+  <link name="j_20_link">
+    <visual>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="j_20" type="revolute">
+    <parent link="base_link"/>
+    <child link="j_20_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <link name="j_21_link">
+    <visual>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="j_21" type="revolute">
+    <parent link="j_20_link"/>
+    <child link="j_21_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+  <link name="j_22_link">
+    <visual>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="j_22" type="revolute">
+    <parent link="j_21_link"/>
+    <child link="j_22_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="10" velocity="1" lower="-3.14" upper="3.14"/>
+  </joint>
+
+</robot>

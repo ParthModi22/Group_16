@@ -1,0 +1,111 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+venv/
+ENV/
+*.manifest
+.env
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+*.apk
+*.unitypackage
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+sysinfo.txt
+*.booproj
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.sln
+*.csproj
+*.unityproj
+.consulo/
+*.private
+*.private.meta
+core
+core.meta
+
+# ROS2
+log/
+install/
+build/
+
+# Heavy Files & Data
+# Video and Media
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.m4v
+
+# ROS Bags and Data
+*.bag
+*.bags
+data/
+datasets/
+dataset/
+
+# Compressed Archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Model Weights and ML files
+*.pkl
+*.h5
+*.pth
+*.pt
+*.weights
+*.onnx
+*.pb
+*.tflite
+models/
+*.csv
+
+# IDE
+.vscode/
+.idea/
+.codex/
